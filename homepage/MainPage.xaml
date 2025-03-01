@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MauiApp2.MainPage">
+
+
+    <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout Padding="0" Spacing="10" BackgroundColor="White">
+
+            <!-- Header Section (Handles Notch & Safe Area) -->
+            <Grid BackgroundColor="#007AFF" Padding="20" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="CivicFix"
+                       FontSize="{OnIdiom Phone=26, Tablet=30}"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="0"/>
+
+                <Label Text="Your City, Your Voice, Your Solution"
+                       FontSize="14"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Margin="0,5,0,0"/>
+            </Grid>
+
+            <!-- Total Complaints Card -->
+            <Frame Padding="15" CornerRadius="12" HasShadow="True" Margin="10">
+                <StackLayout>
+                    <Label Text="Total Complaints" FontSize="16" TextColor="Black"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10" >
+                        <Label x:Name="SolvedComplaintsLabel" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                        <Label Text="Solved" FontSize="20" TextColor="Green" VerticalOptions="End"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Complaint Button -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Button Text="Complain Here"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="16"
+                    HeightRequest="55"
+                    WidthRequest="180"
+                    Clicked="complaint_Clicked"/>
+
+                <Button Text="Your Complaint"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="16"
+                    HeightRequest="55"
+                    WidthRequest="180"
+                    Clicked="YourComplaintPage_Clicked"/>
+            </StackLayout>
+
+            <!-- Latest Solved Complaints -->
+            <Label Text="Latest Solved:" FontSize="18" FontAttributes="Bold" Margin="20,0,0,10"/>
+
+            <StackLayout Padding="10">
+                <!-- Complaint Cards -->
+                <Frame Padding="15" CornerRadius="12" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="CMP-001" FontSize="12" TextColor="Gray"/>
+                        <Label Text="Road Maintenance Required" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Main Street" FontSize="14" TextColor="Gray"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="✔ Solved" FontSize="14" TextColor="Green"/>
+                            <Label Text="2 hours ago" FontSize="14" TextColor="Gray" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="15" CornerRadius="12" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="CMP-002" FontSize="12" TextColor="Gray"/>
+                        <Label Text="Street Light Not Working" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Park Avenue" FontSize="14" TextColor="Gray"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="✔ Solved" FontSize="14" TextColor="Green"/>
+                            <Label Text="5 hours ago" FontSize="14" TextColor="Gray" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="15" CornerRadius="12" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="CMP-003" FontSize="12" TextColor="Gray"/>
+                        <Label Text="Garbage Collection Issue" FontSize="16" FontAttributes="Bold"/>
+                        <Label Text="Market Area" FontSize="14" TextColor="Gray"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="✔ Solved" FontSize="14" TextColor="Green"/>
+                            <Label Text="1 day ago" FontSize="14" TextColor="Gray" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+
+            <!-- Horizontal Line -->
+            <BoxView HeightRequest="2" BackgroundColor="Gray" Margin="20,10,20,10"/>
+
+            <!-- Bottom Navigation -->
+            <Grid Padding="10" BackgroundColor="White" HeightRequest="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Home Button -->
+                <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <Button Text="Home" BackgroundColor="#007AFF"
+                        FontSize="14" TextColor="White"
+                        HorizontalOptions="Center"
+                        HeightRequest="40" WidthRequest="100"
+                        CornerRadius="10" Clicked="Home_Clicked"/>  
+                </StackLayout>
+
+                <!-- Complaint Button -->
+                <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <Button Text="Complain" BackgroundColor="#007AFF"
+                        FontSize="14" TextColor="White"
+                        HorizontalOptions="Center"
+                        HeightRequest="40" WidthRequest="100"
+                        CornerRadius="10" Clicked="complaint_Clicked"/>         
+                </StackLayout>
+
+                <StackLayout Grid.Column="2" HorizontalOptions="Center">
+                    <Button Text="Profile" BackgroundColor="#007AFF"
+                        FontSize="14" TextColor="White"
+                        HorizontalOptions="Center"
+                        HeightRequest="40" WidthRequest="100"
+                        CornerRadius="10" Clicked="Profile_Clicked"/> 
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </ScrollView>
+
+
+  
+
+</ContentPage>
