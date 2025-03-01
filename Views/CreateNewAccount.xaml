@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CivicFix.Views.CreateNewAccount"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="CreateNewAccount">
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="20"
+        VerticalOptions="StartAndExpand">
+        <VerticalStackLayout
+            x:Name="pnlMobile"
+            Padding="10"
+            IsVisible="True"
+            Spacing="20"
+            VerticalOptions="StartAndExpand">
+
+            <!--  Back Button  -->
+            <ImageButton
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                Source="back_icon.png"
+                WidthRequest="30" />
+
+            <!--  Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Start"
+                Text="Create Account"
+                TextColor="Black" />
+
+            <!--  Subtitle  -->
+            <Label
+                FontSize="14"
+                HorizontalOptions="Start"
+                Text="Enter your mobile number to create an account"
+                TextColor="Gray" />
+
+            <!--  Mobile Number Label  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Start"
+                Text="Mobile Number"
+                TextColor="Black" />
+
+            <!--  Mobile Number Input  -->
+            <Frame
+                Padding="10"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="8">
+                <HorizontalStackLayout>
+                    <Label
+                        FontSize="16"
+                        Text="+91"
+                        VerticalOptions="Center" />
+                    <Entry
+                        x:Name="MobileNumberEntry"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Telephone"
+                        Placeholder="Enter mobile number" />
+
+
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame
+                Padding="10"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="8">
+                <HorizontalStackLayout>
+                    <Entry
+                        x:Name="UserName"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Text"
+                        Placeholder="Enter User Name" />
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame
+                Padding="10"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="8">
+                <HorizontalStackLayout>
+                    <Entry
+                        x:Name="Password"
+                        HorizontalOptions="FillAndExpand"
+                        IsPassword="True"
+                        Placeholder="Enter Password" />
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame
+                Padding="10"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="8">
+                <HorizontalStackLayout>
+                    <Entry
+                        x:Name="APassword"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Enter Password Again" />
+                </HorizontalStackLayout>
+            </Frame>
+
+
+            <!--  Terms and Conditions  -->
+            <Label
+                FontSize="12"
+                HorizontalOptions="Start"
+                Text="By continuing, you agree to our Terms of Service and Privacy Policy"
+                TextColor="Gray" />
+
+            <!--  Continue Button  -->
+            <Button
+                x:Name="btncvarify"
+                BackgroundColor="#1A1A56"
+                Clicked="btncvarify_Clicked"
+                CornerRadius="8"
+                FontSize="16"
+                HeightRequest="50"
+                Text="Continue"
+                TextColor="White" />
+
+            <!--  Info Label  -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    HeightRequest="20"
+                    Source="info_icon.png"
+                    WidthRequest="20" />
+                <Label
+                    FontSize="12"
+                    HorizontalOptions="Start"
+                    Text="Your mobile number will be used for verification"
+                    TextColor="Gray" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            x:Name="pnlMobileVerification"
+            Padding="30"
+            IsVisible="False"
+            Spacing="20"
+            VerticalOptions="StartAndExpand">
+
+            <!--  Back Button  -->
+            <ImageButton
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                Source="back_icon.png"
+                WidthRequest="30" />
+
+            <!--  Verification Icon  -->
+            <Image
+                Margin="0,20,0,10"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                Source="verification_icon.png"
+                WidthRequest="80" />
+
+            <!--  Verification Code Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Verification Code"
+                TextColor="Black" />
+
+            <!--  Instructions  -->
+            <Label
+                FontSize="14"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="We have sent a verification code to \n your phone number***********"
+                TextColor="Gray" />
+
+            <!--  OTP Entry  -->
+            <Entry
+                x:Name="OTPCode"
+                FontSize="18"
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric"
+                MaxLength="6"
+                WidthRequest="240" />
+
+            <!--  Expiration Timer  -->
+            <Label
+                x:Name="TimerLabel"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="Code expires in 02:00"
+                TextColor="Red" />
+
+
+
+
+            <!--  Verify Button  -->
+            <Button
+                x:Name="btnVerifyCode"
+                BackgroundColor="#3366FF"
+                Clicked="btnVerifyCode_Clicked"
+                CornerRadius="8"
+                FontSize="16"
+                HeightRequest="50"
+                Text="Verify"
+                TextColor="White" />
+            <!--  Resend Code Button  -->
+
+            <Button
+                x:Name="resendOTP"
+                BackgroundColor="Transparent"
+                Clicked="resendOTP_Clicked"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="Resend Code"
+                TextColor="Blue" />
+
+            <!--  Change Phone Number  -->
+            <Button
+                x:Name="changeNumber"
+                BackgroundColor="Transparent"
+                Clicked="changeNumber_Clicked"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="Change Phone Number"
+                TextColor="Blue" />
+
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
