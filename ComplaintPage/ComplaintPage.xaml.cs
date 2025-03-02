@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using System;
@@ -25,26 +25,9 @@ namespace MauiApp3
         public ComplaintPage()
         {
             InitializeComponent();
-            Task.Run(async () => await ConnectToDatabase());
+            
         }
 
-        private async Task ConnectToDatabase()
-        {
-            try
-            {
-                var client = new MongoClient(mongoUri);
-                var database = client.GetDatabase("localhost:27017"); // Change database name if needed
-
-                _complaintsCollection = database.GetCollection<BsonDocument>("complaints");
-
-                var result = await database.RunCommandAsync<BsonDocument>(new BsonDocument("ping", 1));
-                Console.WriteLine("✅ Successfully connected to MongoDB (Local)!");
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Database Error", $"Connection failed: {ex.Message}", "OK");
-            }
-        }
 
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
@@ -94,13 +77,13 @@ namespace MauiApp3
                     { "timestamp", DateTime.UtcNow }
                 };
 
-                await _complaintsCollection.InsertOneAsync(complaint);
+                //await _complaintsCollection.InsertOneAsync(complaint);
                 await DisplayAlert("Success", "Your complaint has been submitted successfully.", "OK");
                 ResetForm();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Failed to submit complaint: {ex.Message}", "OK");
+                
             }
         }
 
@@ -206,7 +189,7 @@ namespace MauiApp3
 
         private async void OnCancelClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//MainPage");
+            await Navigation.PushAsync(new MainPage());
         }
 
         private async void Profile_Clicked(object sender, EventArgs e)
