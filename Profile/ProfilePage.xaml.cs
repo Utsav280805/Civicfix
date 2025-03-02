@@ -1,7 +1,6 @@
 using Microsoft.Maui.Controls;
+namespace MauiApp3;
 
-namespace MauiApp2
-{
     public partial class ProfilePage : ContentPage
     {
         public ProfilePage()
@@ -23,12 +22,13 @@ namespace MauiApp2
             }
         }
 
+
         // Event handler for viewing user's complaints
         private void YourComplaints_Clicked(object sender, EventArgs e)
         {
             // Navigate to the page that shows user's complaints (e.g., ComplaintListPage)
             // Assuming you have a ComplaintsPage to show complaints
-            Navigation.PushAsync(new ComplaintPage());  // Replace with your actual page name
+            Navigation.PushAsync(new YourComplaint());  // Replace with your actual page name
         }
 
         // Event handler for sign out button
@@ -44,4 +44,3 @@ namespace MauiApp2
             }
         }
     }
-}
