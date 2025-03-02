@@ -1,39 +1,53 @@
-namespace MauiApp3;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Types;
 using System;
-using System.Collections.Generic;
-using Twilio.Rest.Verify.V2.Service;
-using Microsoft.Maui.Controls;
+using MauiApp3.Database;
+using MauiApp3;
+using MauiApp3.Models;
 
-public partial class LoginPage : ContentPage
+namespace MauiApp3
 {
-    public LoginPage()
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
-    }
+        private readonly DatabaseHelper _database = new DatabaseHelper();
 
-    private void btnCreatenewaccount_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync(nameof(CreateNewAccount));
-    }
-
-    private async void btnlogin_Clicked(object sender, EventArgs e)
-
-    {
-        string adminID = txtMoblileNo.Text;
-        string adminPassword = Password.Text;
-        if(string.IsNullOrEmpty(adminID) || string.IsNullOrEmpty(adminPassword))
+        public LoginPage()
         {
-            await DisplayAlert("Error", "Please enter valid credentials", "OK");
-            return;
+            InitializeComponent();
         }
-        await Shell.Current.GoToAsync(nameof(MainPage));
 
+        private void btnCreatenewaccount_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(CreateNewAccount));
+        }
 
+        private async void btnlogin_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                string mobileNumber = txtMoblileNo.Text?.Trim();
+                string password = Password.Text?.Trim();
 
+                if (string.IsNullOrWhiteSpace(mobileNumber) || string.IsNullOrWhiteSpace(password))
+                {
+                    await DisplayAlert("Error", "Mobile Number and Password are required!", "OK");
+                    return;
+                }
+
+                // Validate user in SQLite database
+                var user = await _database.GetUser(mobileNumber, password);
+                if (user == null)
+                {
+                    await DisplayAlert("Login Failed", "Invalid credentials! Please try again.", "OK");
+                    return;
+                }
+
+                // Navigate to the main dashboard
+                await Shell.Current.GoToAsync(nameof(MainPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Login Error: {ex.Message}");
+                await DisplayAlert("Error", "An unexpected error occurred. Please try again.", "OK");
+            }
+        }
     }
-
-
 }
