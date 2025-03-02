@@ -85,13 +85,7 @@
                 TextColor="red" />
 
                 <!--  Terms and Privacy  -->
-                <Label
-                Margin="0,20,0,0"
-                FontSize="12"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="By continuing, you agree to our Terms of Service and Privacy Policy"
-                TextColor="Gray" />
+                
             </VerticalStackLayout>
             <VerticalStackLayout
             x:Name="pnlMobileVerification"
