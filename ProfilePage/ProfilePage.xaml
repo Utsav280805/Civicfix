@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.ProfilePage"
+             Title="Profile">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15" BackgroundColor="White">
+
+            <!-- Profile Icon -->
+            <Frame Padding="20" CornerRadius="100" BorderColor="#007AFF" HorizontalOptions="Center">
+                <Image Source="profile_icon.png" WidthRequest="80" HeightRequest="80"/>
+            </Frame>
+
+            <!-- Username -->
+            <Frame Padding="10" CornerRadius="10" HasShadow="False" BorderColor="LightGray">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Label Text="Username" FontSize="14" TextColor="Gray"/>
+                        <Label x:Name="UsernameLabel" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Mobile Number -->
+            <Frame Padding="10" CornerRadius="10" HasShadow="False" BorderColor="LightGray">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Label Text="Mobile Number" FontSize="14" TextColor="Gray"/>
+                        <Label x:Name="MobileLabel" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+                    </StackLayout>
+                    <ImageButton Source="edit_icon.png" WidthRequest="20" HeightRequest="20" Clicked="EditMobile_Clicked"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Your Complaints Button -->
+            <Button Text="Your Complaints"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                FontSize="16"
+                HeightRequest="55"
+               Clicked="YourComplaints_Clicked"/>
+
+            <!-- Sign Out Button -->
+            <Button Text="kkjx88888888888888888Sign Out"
+                BackgroundColor="White"
+                BorderColor="Red"
+                TextColor="Red"
+                BorderWidth="1"
+                CornerRadius="10"
+                FontSize="16"
+                HeightRequest="55"
+                Clicked="SignOut_Clicked"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

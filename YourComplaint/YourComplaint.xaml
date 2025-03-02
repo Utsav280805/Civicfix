@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.YourComplaint"
+             Title="YourComplaint">
+
+    <VerticalStackLayout Padding="20">
+
+        <!-- Summary Section -->
+        <Grid ColumnDefinitions="*,*" RowSpacing="10">
+            <Frame BackgroundColor="#FFF7E6" Padding="10" CornerRadius="10">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="pending_icon.png" WidthRequest="24" HeightRequest="24"/>
+                    <Label Text="Pending Complaints" FontSize="14" TextColor="Gray"/>
+                    <Label x:Name="PendingComplaintsLabel" Text="0" FontSize="24" FontAttributes="Bold" TextColor="#FFA500"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#E6FFE6" Padding="10" CornerRadius="10" Grid.Column="1">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="completed_icon.png" WidthRequest="24" HeightRequest="24"/>
+                    <Label Text="Completed Complaints" FontSize="14" TextColor="Gray"/>
+                    <Label x:Name="CompletedComplaintsLabel" Text="0" FontSize="24" FontAttributes="Bold" TextColor="#008000"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!-- Complaints List -->
+        <ListView x:Name="ComplaintsListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Padding="10" Margin="5" CornerRadius="10" BorderColor="LightGray">
+                            <StackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Status}" FontSize="14" FontAttributes="Bold" Margin="10,0,0,0">
+                                        <Label.TextColor>
+                                            <Binding Path="Status" Converter="{StaticResource StatusColorConverter}"/>
+                                        </Label.TextColor>
+                                    </Label>
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray"/>
+                                <Label Text="{Binding Date}" FontSize="12" TextColor="Gray"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add Complaint Button -->
+        <Button Text="+ Add New Complaint"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                FontSize="16"
+                CornerRadius="10"
+                Clicked="AddComplaint_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>
