@@ -1,41 +1,53 @@
-namespace CivicFix.Views;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Types;
 using System;
-using System.Collections.Generic;
-using Twilio.Rest.Verify.V2.Service;
+using MauiApp3.Database;
+using MauiApp3;
+using MauiApp3.Models;
 
-public partial class LoginPage : ContentPage
+namespace MauiApp3
 {
-	public LoginPage()
-	{
-		InitializeComponent();
-	}
-
-    private void btnCreatenewaccount_Clicked(object sender, EventArgs e)
+    public partial class LoginPage : ContentPage
     {
-        Shell.Current.GoToAsync(nameof(CreateNewAccount));
-    }
+        private readonly DatabaseHelper _database = new DatabaseHelper();
 
-    private async void btnlogin_Clicked(object sender, EventArgs e)
-
-    {
-        string adminID = txtMoblileNo.Text;
-        string adminPassword = Password.Text;
-        if (txtMoblileNo.Equals("GarbX92MTA") && adminPassword.Equals("G@rbS3c92!")) 
+        public LoginPage()
         {
-            await Shell.Current.GoToAsync(nameof(GAdminDashboard));
-        }
-         else if (txtMoblileNo.Equals("RoadZ76BQC") && adminPassword.Equals("R0adS3c76!"))
-        {
-            await Shell.Current.GoToAsync(nameof(RAdminDashboard));
+            InitializeComponent();
         }
 
-        pnlMobile.IsVisible = false;
-        pnlMobileVerification.IsVisible = true;
+        private void btnCreatenewaccount_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(CreateNewAccount));
+        }
 
+        private async void btnlogin_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                string mobileNumber = txtMoblileNo.Text?.Trim();
+                string password = Password.Text?.Trim();
+
+                if (string.IsNullOrWhiteSpace(mobileNumber) || string.IsNullOrWhiteSpace(password))
+                {
+                    await DisplayAlert("Error", "Mobile Number and Password are required!", "OK");
+                    return;
+                }
+
+                // Validate user in SQLite database
+                var user = await _database.GetUser(mobileNumber, password);
+                if (user == null)
+                {
+                    await DisplayAlert("Login Failed", "Invalid credentials! Please try again.", "OK");
+                    return;
+                }
+
+                // Navigate to the main dashboard
+                await Shell.Current.GoToAsync(nameof(MainPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Login Error: {ex.Message}");
+                await DisplayAlert("Error", "An unexpected error occurred. Please try again.", "OK");
+            }
+        }
     }
-
-    
 }
