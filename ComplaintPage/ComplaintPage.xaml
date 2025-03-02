@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.ComplaintPage"
+             Title="ComplaintPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <!-- Full Name -->
+            <Label Text="Full Name *" FontSize="14" TextColor="Black"/>
+            <Entry x:Name="FullNameEntry" Placeholder="Enter your full name" FontSize="16" BackgroundColor="White" TextColor="Black" HeightRequest="50"/>
+
+            <!-- Mobile Number -->
+            <Label Text="Mobile Number *" FontSize="14" TextColor="Black"/>
+            <Entry x:Name="MobileEntry" Placeholder="Enter mobile number" FontSize="16" Keyboard="Telephone" BackgroundColor="White" TextColor="Black" HeightRequest="50"/>
+
+            <!-- Complaint Type -->
+            <Label Text="Complaint Type *" FontSize="14" FontAttributes="Bold" TextColor="Black" Margin="0,10,0,5"/>
+
+            <HorizontalStackLayout Spacing="10">
+
+                <!-- Garbage -->
+                <Border x:Name="GarbageBorder" Stroke="LightGray" StrokeThickness="2" Padding="10" BackgroundColor="White">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="garbage_black.png" WidthRequest="30"/>
+                        <Label Text="Garbage" FontSize="14" TextColor="Black"/>
+                    </VerticalStackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGarbageSelected_Tapped"/>
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <!-- Road Damage -->
+                <Border x:Name="RoadDamageBorder" Stroke="LightGray" StrokeThickness="2" Padding="10" BackgroundColor="White">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="road_black.png" WidthRequest="30"/>
+                        <Label Text="Road Damage" FontSize="14" TextColor="Black"/>
+                    </VerticalStackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRoadDamageSelected_Tapped"/>
+                    </Border.GestureRecognizers>
+                </Border>
+
+            </HorizontalStackLayout>
+
+            <!-- Complaint Description -->
+            <Label Text="Complaint Description *" FontSize="14" TextColor="Black"/>
+            <Frame BorderColor="LightGray" CornerRadius="10" Padding="10">
+                <HorizontalStackLayout Spacing="10">
+                    <Editor x:Name="ComplaintEditor" Placeholder="Describe your complaint..." FontSize="16" BackgroundColor="White" TextColor="Black" HeightRequest="100"/>
+                    <ImageButton Source="mic_icon.png" WidthRequest="40" HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Upload Images -->
+            <Frame Padding="20" BorderColor="LightGray" CornerRadius="10" HeightRequest="300">
+                <Grid>
+                    <!-- Image Placeholder -->
+                    <Image x:Name="SelectedImage" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"/>
+
+                    <!-- Upload Label on top of Image -->
+                    <Label x:Name="UploadLabel" Text="Click to upload" FontSize="16" TextColor="#007AFF" 
+                           HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent"/>
+                </Grid>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnUploadImageTapped"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <!-- Submit & Cancel Buttons Aligned in One Row -->
+            <HorizontalStackLayout Margin="0,20,0,0" Spacing="20" HorizontalOptions="Center">
+                <Button x:Name="SubmitButton" Text="Submit"
+                        BackgroundColor="#007AFF"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        WidthRequest="150"
+                        HeightRequest="60"
+                        FontSize="18"
+                        Clicked="OnSubmitClicked"
+                        CornerRadius="10"/>
+
+                <Button x:Name="CancelButton" Text="Cancel"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        BorderColor="Gray"
+                        BorderWidth="2"
+                        WidthRequest="150"
+                        HeightRequest="60"
+                        FontSize="18"
+                        CornerRadius="10"
+                        Clicked="OnCancelClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

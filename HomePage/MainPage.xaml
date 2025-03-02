@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.MainPage">
+
+    <Grid>
+        <!-- Main Content -->
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="0,0,0,80" Spacing="10" BackgroundColor="White">
+
+                <!-- Header Section -->
+                <Grid BackgroundColor="#007AFF" Padding="20" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="CivicFix"
+                            FontSize="{OnIdiom Phone=26, Tablet=30}"
+                            FontAttributes="Bold"
+                            FontFamily="Sans-Serif"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"/>
+                        <Label Text="Your City, Your Voice, Your Solution"
+                            FontSize="13"
+                            FontAttributes="Italic"
+                            FontFamily="Arial"
+                            TextColor="#E0F0FF"
+                            HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <!-- Profile Icon (Top-Right) -->
+                    <ImageButton Source="profile_icon.png" 
+                        WidthRequest="30" HeightRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Clicked="Profile_Clicked"/>
+                </Grid>
+
+                <!-- Total Complaints Card -->
+                <Frame Padding="15" CornerRadius="12" HasShadow="True" Margin="10" BackgroundColor="#F0F0F5">
+                    <StackLayout>
+                        <Label Text="Total Complaints" FontSize="16" TextColor="#666666" FontFamily="Sans-Serif"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label x:Name="SolvedComplaintsLabel" FontSize="20" FontAttributes="Bold" TextColor="#444444"/>
+                            <Label Text="Solved" FontSize="20" TextColor="Green" VerticalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Your Complaint Button -->
+                <Button Text="Your Complaint"
+                    BackgroundColor="#007AFF"
+                    FontSize="15"
+                    TextColor="White"
+                    HeightRequest="50"
+                    WidthRequest="370"
+                    CornerRadius="10"
+                    Margin="10"
+                    Clicked="YourComplaintPage_Clicked"/>
+
+                <!-- Latest Solved Complaints -->
+                <Label Text="Latest Solved Complaints:" FontSize="18" FontAttributes="Bold" Margin="20,0,0,-10" FontFamily="Sans-Serif" TextColor="#888888"/>
+
+                <StackLayout Padding="10">
+                    <!-- Complaint Cards -->
+                    <Frame Padding="15" CornerRadius="12" HasShadow="True" Margin="10" BackgroundColor="#F8F8F8">
+                        <StackLayout>
+                            <Label Text="No.1" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <Label Text="Road Maintenance Required" FontSize="16" FontAttributes="Bold" FontFamily="Sans-Serif" TextColor="#666666"/>
+                            <Label Text="Main Street" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="✔ Solved" FontSize="14" TextColor="Green" FontFamily="Sans-Serif"/>
+                                <Label  FontSize="14" TextColor="#999999" HorizontalOptions="EndAndExpand" FontFamily="Sans-Serif"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="15" CornerRadius="12" HasShadow="True" Margin="10" BackgroundColor="#F8F8F8">
+                        <StackLayout>
+                            <Label Text="No.2" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <Label Text="Street Light Not Working" FontSize="16" FontAttributes="Bold" FontFamily="Sans-Serif" TextColor="#666666"/>
+                            <Label Text="Park Avenue" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="✔ Solved" FontSize="14" TextColor="Green" FontFamily="Sans-Serif"/>
+                                <Label  FontSize="14" TextColor="#999999" HorizontalOptions="EndAndExpand" FontFamily="Sans-Serif"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Padding="15" CornerRadius="12" HasShadow="True" Margin="10" BackgroundColor="#F8F8F8">
+                        <StackLayout>
+                            <Label Text="No.3" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <Label Text="Garbage Collection Issue" FontSize="16" FontAttributes="Bold" FontFamily="Sans-Serif" TextColor="#666666"/>
+                            <Label Text="Market Area" FontSize="14" TextColor="#999999" FontFamily="Sans-Serif"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="✔ Solved" FontSize="14" TextColor="Green" FontFamily="Sans-Serif"/>
+                                <Label  FontSize="14" TextColor="#999999" HorizontalOptions="EndAndExpand" FontFamily="Sans-Serif"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Fixed Bottom Complaint & Profile Buttons -->
+        <Grid Padding="5" BackgroundColor="White" HeightRequest="60"
+              VerticalOptions="End" HorizontalOptions="Fill"
+              Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Complaint"
+                BackgroundColor="#007AFF"
+                FontSize="16"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10"
+                Clicked="complaint_Clicked"
+                Grid.Column="0"/>
+
+            <Button Text="Profile"
+                BackgroundColor="#007AFF"
+                FontSize="16"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10"
+                Clicked="Profile_Clicked"
+                Grid.Column="2"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
